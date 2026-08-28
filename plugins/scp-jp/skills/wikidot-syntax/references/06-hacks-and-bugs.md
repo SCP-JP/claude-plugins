@@ -579,6 +579,8 @@ UFO は軌道の都合で height 150px 以上が必要。
 | 奇声言語 | オリジナル BrainFuck を実装するライブラリ（`hoby:kisei`） |
 | 時限式移動 | 時間経過でページ遷移する JS ライブラリ（`time-move`、`…/time-move/code/1` を script src に） |
 
+> 原典（この表のうち原典が判明しているもの）: [奇声言語](http://shitake-crude-production.wikidot.com/hoby:kisei) / [時限式移動](http://shitake-crude-production.wikidot.com/time-move) — いずれも C-take 著, CC BY-SA 3.0。本稿は要約・再構成。他の行は Wikidot の一般的な構文・CSS の利用法。
+
 ---
 
 ## F. この章の技を使うときの心得
