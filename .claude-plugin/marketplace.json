@@ -1,0 +1,14 @@
+{
+  "name": "scp-jp-plugins",
+  "owner": {
+    "name": "SCP-JP"
+  },
+  "description": "SCP-JP コミュニティ向けの Claude Code plugin を配布する marketplace。",
+  "plugins": [
+    {
+      "name": "scp-jp",
+      "source": "./plugins/scp-jp",
+      "description": "SCP-JP / Wikidot の執筆に使う skill 一式。"
+    }
+  ]
+}
