@@ -1,0 +1,67 @@
+name: Validate Plugin Marketplace
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Marketplace / Plugin Validate
+    runs-on: ubuntu-latest
+    steps:
+      - name: チェックアウト
+        uses: actions/checkout@v7
+
+      - name: Node.js セットアップ
+        uses: actions/setup-node@v4
+        with:
+          node-version: "lts/*"
+
+      - name: Claude Code CLI インストール
+        run: npm install -g @anthropic-ai/claude-code
+
+      - name: marketplace を検証
+        run: claude plugin validate . --strict
+
+      - name: scp-jp plugin を検証
+        run: claude plugin validate ./plugins/scp-jp --strict
+
+  version-bump:
+    name: Version Bump Check
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      # base との diff を取るため全履歴が必要（既定の fetch-depth: 1 では base.sha が手元にない）
+      - name: チェックアウト
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: plugins/ の変更に対する version bump を確認
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          PLUGIN_JSON: plugins/scp-jp/.claude-plugin/plugin.json
+        run: |
+          # PR の全コミット分の累積差分を見る（最新コミットより前の変更も拾うため HEAD^..HEAD は使わない）
+          if git diff --quiet "$BASE_SHA"..HEAD -- plugins/; then
+            echo "plugins/ に変更なし。version bump チェックをスキップします。"
+            exit 0
+          fi
+
+          # base 側に plugin.json が存在しない（新規追加）場合は空文字として扱う
+          OLD_VERSION=$(git show "$BASE_SHA:$PLUGIN_JSON" 2>/dev/null | jq -r .version 2>/dev/null || echo "")
+          NEW_VERSION=$(jq -r .version "$PLUGIN_JSON")
+
+          echo "旧バージョン: ${OLD_VERSION:-(新規追加)}"
+          echo "新バージョン: $NEW_VERSION"
+
+          if [ "$OLD_VERSION" = "$NEW_VERSION" ]; then
+            echo "::error::plugins/scp-jp に変更がありますが、$PLUGIN_JSON の version ($NEW_VERSION) が更新されていません。"
+            exit 1
+          fi

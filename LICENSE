@@ -1,0 +1,75 @@
+LICENSE
+
+このリポジトリは複数のライセンスを併用している。SPDX の複合表現（`MIT AND CC-BY-SA-3.0` 等）は
+`plugin.json` には記載していない。適用範囲はファイル単位で以下の対応表に従う。
+
+## 適用範囲
+
+| パス                                                          | 種別             | ライセンス   |
+| ------------------------------------------------------------- | ---------------- | ------------ |
+| `plugins/scp-jp/skills/wikidot-syntax/SKILL.md`                | ドキュメント     | CC BY-SA 3.0 |
+| `plugins/scp-jp/skills/wikidot-syntax/references/**`           | ドキュメント     | CC BY-SA 3.0 |
+| `plugins/scp-jp/skills/wikidot-syntax/scripts/**`              | コード           | MIT          |
+| 上記以外すべて（`.claude-plugin/*.json`、`.github/**`、`README.md`、本ファイル 等） | コード／構成ファイル | MIT          |
+
+---
+
+## 1. ドキュメント（CC BY-SA 3.0）
+
+`SKILL.md` および `references/` 配下は
+[Creative Commons Attribution-ShareAlike 3.0 Unported](https://creativecommons.org/licenses/by-sa/3.0/)
+（CC BY-SA 3.0）の下で提供する。SCP Wiki 本体（SCP-JP / SCP-EN）と同一のライセンスを採用している。
+
+利用にあたっては次の条件が適用される。
+
+- **表示（Attribution）**: 出典として本リポジトリ（`SCP-JP/claude-plugins`）を明示すること
+- **継承（ShareAlike）**: 改変・二次利用した場合、同じ CC BY-SA 3.0 で公開すること
+
+full text: https://creativecommons.org/licenses/by-sa/3.0/legalcode
+
+### 出典についての注記
+
+`references/` は Wikidot 公式ドキュメント（`www.wikidot.com`、Copyright © Wikidot, Inc., All Rights
+Reserved）を仕様の事実確認に用いているが、その文章を複製・翻訳したものではない。構文記号・属性名・許可値
+などの事実のみを抽出し、独自に構成・記述し直している。
+
+## 2. コード（MIT License）
+
+`scripts/` 配下、および `.claude-plugin/*.json` ・ `.github/**` ・ `README.md` ・ 本ファイルを含む
+それ以外のファイルは MIT License の下で提供する。
+
+```
+MIT License
+
+Copyright (c) 2026 SCP-JP
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
+
+## 3. 第三者由来の技法・素材
+
+本リポジトリの著作権表示とは別に、内容の一部が参照・言及している第三者の技法／素材。以下の権利は原著作者
+に帰属し、本リポジトリはそれらのファイル自体（フォント本体等）を同梱していない。
+
+| 対象                                                                 | 記載箇所                              | 原典                             | ライセンス               |
+| ---------------------------------------------------------------------- | -------------------------------------- | -------------------------------- | ------------------------ |
+| CSS グリッチテキスト技法（`data-*` 属性 + `content: attr()` によるノイズ表現） | `references/06-hacks-and-bugs.md` B-7 | Lucas Bebber, "CSS Glitched Text" | MIT                      |
+| `component:ayu18`（等幅ビットマップ表示）                              | `references/05-scp-jp.md`             | SCP-JP `component:ayu18`         | Public Domain            |
+| `component:hotsu`（神代文字コンポーネント）                            | `references/05-scp-jp.md`             | SCP-JP `component:hotsu`         | フリーフォント（改変禁止） |
+| GlyphWiki 由来のグリフ（外字）                                          | `references/05-scp-jp.md`             | GlyphWiki                        | ウェブフォントとしての利用可 |

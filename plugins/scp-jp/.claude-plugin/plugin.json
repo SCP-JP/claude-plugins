@@ -1,6 +1,6 @@
 {
   "name": "scp-jp",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "SCP-JP / Wikidot の執筆に使う skill 一式。",
   "author": {
     "name": "SCP-JP",
@@ -8,5 +8,9 @@
   },
   "homepage": "https://github.com/SCP-JP/claude-plugins",
   "repository": "https://github.com/SCP-JP/claude-plugins",
-  "keywords": ["wikidot", "scp", "scp-jp"]
+  "keywords": [
+    "wikidot",
+    "scp",
+    "scp-jp"
+  ]
 }
