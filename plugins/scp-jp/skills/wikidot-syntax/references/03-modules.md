@@ -83,6 +83,7 @@ ListPages / CountPages は `02-listpages.md` を参照。
 - `disable="true"` … CSS を無効化する
 - **1ページに何個でも置ける**。出力順に HTML の head に並ぶ
 - クロスサイトインクルード（CSI）と組み合わせるのが本来の用途
+- 本文の `&` は `&amp;` に変換されて `<style>` に出力され、`<style>` の中では実体参照として解釈されない。`@import url()` のクエリの `&` は CSS のエスケープ `\26 `（後ろに半角空白）で書く（例: `url("…?a=1\26 b=2")`）
 
 ### NewPage
 `category` / `template`（`template:` カテゴリのページ。カンマ区切りで複数）/ `size` / `button` / `format`（PCRE 正規表現）/ `tags` / `parent` / `mode`(`edit`/`save-and-refresh`/`save-and-go`) / `goTo`
